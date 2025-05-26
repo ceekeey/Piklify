@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2025 at 09:06 PM
+-- Generation Time: May 26, 2025 at 09:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `snapzy`
+-- Database: `piklify`
 --
 
 -- --------------------------------------------------------
@@ -30,17 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `likes` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `likes`
 --
 
-INSERT INTO `likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
-(1, 1, 1, '2025-05-26 18:15:48'),
-(2, 2, 1, '2025-05-26 18:27:33');
+INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
+(1, 1, 3),
+(2, 1, 4),
+(3, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,7 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `image_path` varchar(255) NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   `caption` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,10 +61,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `image_path`, `caption`, `created_at`) VALUES
-(1, 1, 'WhatsApp Image 2025-05-25 at 15.58.49_50595c33.jpg', 'isah ceekeey', '2025-05-26 18:15:38'),
-(2, 1, 'gsu.jpg', 'gsu logo', '2025-05-26 18:16:43'),
-(3, 2, 'speech_3392044.png', 'uyt', '2025-05-26 18:29:57'),
-(4, 2, 'ngit.png', 'ngit', '2025-05-26 18:48:18');
+(3, 1, 'uploads/1748285539_speech_3392044.png', 'iuytf', '2025-05-26 18:52:19'),
+(4, 1, 'uploads/1748286073_gsu.jpg', 'gsu logo\r\n', '2025-05-26 19:01:13');
 
 -- --------------------------------------------------------
 
@@ -76,17 +74,16 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
-(1, 'yusirah', 'yusirah@i.c', '$2y$10$7J88R7sPm.mONsv1oy/nh.0Jf7jlWwvpgudTA025n9XBBJBt3eHmm', '2025-05-26 18:14:54'),
-(2, 'ceekeey', 'ceekeey@gmail.com', '$2y$10$iVcwgQtADtBRpKtnwOlNN.VWZMQVEBDpGd2/j1b10b4MKhlzw3tsW', '2025-05-26 18:27:11');
+INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
+(1, 'isah', 'isahceekeey@gmail.com', '$2y$10$E6pqzxNFYt9EVf5mn5G//.KN6ZlBwFCkLZNyR5uUykFSWyw4OIiD.'),
+(2, 'ceekeey', 'ceekeey@gmail.com', '$2y$10$tH0Xn1fW/9KNdpC.TK/wL.GPznQUp7mcxe6.7V5fUb1.icxkPtiIW');
 
 --
 -- Indexes for dumped tables
@@ -97,7 +94,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
 --
 ALTER TABLE `likes`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_id` (`user_id`,`post_id`),
+  ADD KEY `user_id` (`user_id`),
   ADD KEY `post_id` (`post_id`);
 
 --
@@ -111,9 +108,7 @@ ALTER TABLE `posts`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -123,7 +118,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `posts`
