@@ -34,8 +34,13 @@ PhotoShare is a simple and elegant photo-sharing web application built with **PH
 
 1. **Clone the repository**
    ```bash
+<<<<<<< HEAD
    git clone https://github.com/ceekeey/Piklify.git
    cd Piklify
+=======
+   git clone https://github.com/yourusername/photoshare.git
+   cd photoshare
+>>>>>>> 1c54e04ad3005e224f859a3b48a6105df86b5be2
    ```
 
 2. **Create a MySQL database** and import the `database.sql` file in the `includes/` directory.
@@ -43,7 +48,11 @@ PhotoShare is a simple and elegant photo-sharing web application built with **PH
 3. **Configure your database connection**
    - Edit the `includes/db.php` file with your database credentials:
      ```php
+<<<<<<< HEAD
      $conn = mysqli_connect('localhost', 'root', '', 'piklify');
+=======
+     $conn = mysqli_connect('localhost', 'root', '', 'photoshare');
+>>>>>>> 1c54e04ad3005e224f859a3b48a6105df86b5be2
      ```
 
 4. **Start your PHP server**
@@ -51,12 +60,20 @@ PhotoShare is a simple and elegant photo-sharing web application built with **PH
    php -S localhost:8000
    ```
 
+<<<<<<< HEAD
 5. **Visit** `http://localhost/Piklify` in your browser.
+=======
+5. **Visit** `http://localhost:8000` in your browser.
+>>>>>>> 1c54e04ad3005e224f859a3b48a6105df86b5be2
 
 ## 🧱 Folder Structure
 
 ```
+<<<<<<< HEAD
 Piklify/
+=======
+photoshare/
+>>>>>>> 1c54e04ad3005e224f859a3b48a6105df86b5be2
 │
 ├── css/
 │   └── style.css
