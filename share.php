@@ -19,8 +19,6 @@ if (!$post) {
     exit();
 }
 
-// Build share URL (adjust domain as needed)
-$share_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/index.php#post-" . $post_id;
 ?>
 
 <!DOCTYPE html>
@@ -133,21 +131,20 @@ $share_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .
     <div class="container">
         <h2><i class="fa fa-share-alt"></i> Share This Post</h2>
 
-        <p><strong>By: <?php echo htmlspecialchars($post['username']); ?></strong></p>
-        <img src="<?php echo htmlspecialchars($post['image_path']); ?>" alt="Post image" />
-        <p class="caption"><?php echo htmlspecialchars($post['caption']); ?></p>
+        <p><strong>By: <?php echo $post['username']; ?></strong></p>
+        <img src="<?php echo $post['image_path']; ?>" alt="Post image" />
+        <p class="caption"><?php echo $post['caption']; ?></p>
 
-        <input class="share-link" type="text" readonly value="<?php echo htmlspecialchars($share_url); ?>"
-            id="shareLink" />
+        <input class="share-link" type="text" readonly value="<?php echo $share_url; ?>" id="shareLink" />
         <button class="copy-btn" onclick="copyLink()">Copy Link</button>
 
         <div class="social-buttons">
-            <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($share_url); ?>"
+            <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $share_url; ?>"
                 target="_blank" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a class="twitter" href="https://twitter.com/intent/tweet?url=<?php echo urlencode($share_url); ?>"
-                target="_blank" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
-            <a class="whatsapp" href="https://api.whatsapp.com/send?text=<?php echo urlencode($share_url); ?>"
-                target="_blank" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a class="twitter" href="https://twitter.com/intent/tweet?url=<?php echo $share_url; ?>" target="_blank"
+                title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+            <a class="whatsapp" href="https://api.whatsapp.com/send?text=<?php echo $share_url; ?>" target="_blank"
+                title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
     </div>
 
